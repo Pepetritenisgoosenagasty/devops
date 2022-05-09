@@ -35,6 +35,26 @@
 3. echo "Hola" > file.txt - writes content to a file and overwrites it
 4. echo "Hola" >> file.txt - Appends content
 
+## File Descriptions
+
+1. 0 - standard Input
+2. 1 - standard Output
+3. 2 - standard Error
+4. 3 - standard Success
+
+### Commands
+
+1. proc/123/fd - process / file / files description
+2. pipe | - chains commands eg: cat f1.txt | grep foo
+3. grep - searches files eg grep foo cat.txt or cat cat.txt | grep foo
+
+## File System Hierarchy
+
+1. / - root directory
+2. /bin - user binaries
+3. /boot - kernel
+4. /dev - devices
+
 # Switches to another user
 
 1. su - root
