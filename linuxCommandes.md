@@ -54,6 +54,15 @@
 2. /bin - user binaries
 3. /boot - kernel
 4. /dev - devices
+5. /etc - contains configuration files eg: ls -l /etc/`<service name>`/something_config
+6. /home - home directory
+7. /mnt - mounted devices
+8. /opt - contains custom installation(Softwares)
+9. /sbin - contains root user`s binaries
+10. /usr - contains user utilities
+11. /tmp - contains temporary files
+12. /proc - contains process information
+13. /lib - contains shared libraries
 
 # Switches to another user
 
