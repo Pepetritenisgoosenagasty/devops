@@ -1,0 +1,5 @@
+ufw status 
+ufw enable
+ufw allow ssh
+ufw allow http 
+ufw allow https

@@ -30,3 +30,4 @@
 2. sudo systemctl status nginx
 3. sudo systemctl stop nginx
 4. sudo /usr/sbin/nginx -g 'daemon off;' -> runs nginx on the background
+5. 

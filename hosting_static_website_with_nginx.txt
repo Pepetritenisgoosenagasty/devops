@@ -1,0 +1,23 @@
+1. cd /etc/nginx/sites-enabled
+2. vim demo.devops-demo.com;
+3. nginx -t
+4. systemctl reload nginx;
+5. cd /
+6. cd /var/www/
+7. mkdir demo.devops-demo.com;
+8. cd demo.devops-demo.com;
+9. vim index.html;
+10. dig demo.devops-demo.com;
+11. curl demo.devops-demo.com;
+
+server {
+          listen 80;
+
+          server_name devops-demo.com;
+           index index.html index.html;
+          root /var/www/devops-demo.com;
+      
+           location / {       
+                  try_files $uri $uri/ =404;
+           }
+}  
