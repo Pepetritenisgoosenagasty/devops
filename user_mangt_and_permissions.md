@@ -22,6 +22,8 @@
 4. touch authorized_keys
 5. vim authorized_keys
 6. copy key authorized_keys
+7. vim /etc/ssh/sshd_config and change passwordAuthentication to no
+8. systemctl restart sshd
 
 
 # Linux Permissions
