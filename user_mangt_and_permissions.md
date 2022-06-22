@@ -24,6 +24,8 @@
 6. copy key authorized_keys
 7. vim /etc/ssh/sshd_config and change passwordAuthentication to no
 8. systemctl restart sshd
+9. eval `ssh-agent -s`
+10. ssh-add ~/.ssh/id_rsa
 
 
 # Linux Permissions
