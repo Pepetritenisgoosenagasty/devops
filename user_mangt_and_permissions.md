@@ -14,6 +14,15 @@
 10. usermod -aG sudo hulkkamedise -> adds user to sudo group
 11. userdel -> to remove user
 
+### Adding ssh keys to added users
+
+1. cd /home/user
+2. mkdir .ssh
+3. cd .ssh
+4. touch authorized_keys
+5. vim authorized_keys
+6. copy key authorized_keys
+
 
 # Linux Permissions
 
