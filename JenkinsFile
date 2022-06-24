@@ -1,0 +1,89 @@
+CODE_CHANGES = gitGitChanges()
+def gv
+pipeline {
+    agent any
+    // creating a custom variable
+    environment {
+        NEW_VERSION = '1.0.0'
+        SERVER_CRDENTIALS = credentials('server-credentials')
+    }
+
+    tools {
+        maven 'Maven'
+    }
+
+// parameters
+    parameters {
+        string(name: 'VERSION', defaultValue: '', description: 'version to deploy on production')
+        choice(name: 'VERSION', choices: [ '1.1.0', '1.2.0', '1.3.0'], description: 'version to deploy')
+        booleanParam(name: 'executeTests', defaultValue: true, description: '')
+    }
+
+    stages {
+
+        stage("build") {
+               when {
+                expression {
+                    BRANCH_NAME == 'dev' && CODE_CHANGES = true
+                }
+            }
+            steps {
+                // loading groovy script
+                script {
+                    gv.buildApp()
+                }
+                sh 'npm install'
+                sh 'npm build'
+                sh 'mvn install'
+            }
+        }
+
+         stage("test") {
+            // Conditional
+            when {
+                expression {
+                    // test stage to run id branch_name is dev or master
+                    env.BRANCH_NAME == 'dev' || BRANCH_NAME == 'master'
+                    // test build will run is booleanParam is set to true
+                    params.executeTests
+                }
+            }
+            steps {
+
+                script {
+                    gv.testApp()
+                }
+                
+            }
+        }
+         stage("deploy") {
+            steps {
+                 script {
+                    gv.deployApp()
+                }
+                 withCredentials([
+                    usernamePassword(credentials: 'server-credentials', usernameVarible: USER, passwordVarible: PWD)
+                 ]) {
+                    sh "some script ${USER} ${PWD}"
+                 }
+            }
+        }
+        
+    }
+    
+    // After building the script what should be done
+    post {
+        always {
+
+        }
+
+        success {
+
+        }
+
+        failure {
+
+        }
+    }
+
+}

@@ -1,2 +1,7 @@
 Commands
 - ansible debian_server -i hosts -u hulkkamedise -m setup
+
+Creating roles
+- mkdir roles
+- cd roles
+- run ansible-galaxy init <role-name>
